@@ -15,9 +15,14 @@ class CreateMusicTable extends Migration {
 		Schema::create('musics', function(Blueprint $table)
         {
             $table->increments('music_id');
-            $table->integer('sub_cat_id');
-            $table->string('music_file_name');
-            $table->string('');
+            $table->integer('language');
+            $table->integer('singer');
+            $table->integer('actor');
+            $table->integer('movie');
+            $table->integer('album');
+            $table->integer('new_release');
+            $table->integer('bestof');
+            $table->string('music_file');
             $table->timestamps();
         });
 	}
@@ -29,7 +34,7 @@ class CreateMusicTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('musics');
 	}
 
 }
