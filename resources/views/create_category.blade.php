@@ -4,13 +4,10 @@
 <div class="container">
 	<div class="content">
 		<div class="title">Create Category</div>
-		
-        <div class="row">
-        </div>
 	</div>
  
 
-    <div class="panel-body">
+    <div class="panel-body text-right">
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>

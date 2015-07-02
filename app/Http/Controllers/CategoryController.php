@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use DB;
+use App\Quotation;
+
 class CategoryController extends Controller {
 
 	/**
@@ -19,11 +22,6 @@ class CategoryController extends Controller {
         return view('create_category');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function create(Request $request)
 	{
         $flight = new Category;
@@ -47,9 +45,11 @@ class CategoryController extends Controller {
         return view('welcome', ['name' => 'Successfully saved!']);
     }
 
+
     public function subCategory(Request $request)
     {
-        return view('create_sub_category');
+    	$category = DB::table('category')->get();
+        return view('create_sub_category', ['categories' => $category]);
     }
 
 	/**

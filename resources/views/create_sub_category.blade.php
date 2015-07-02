@@ -29,7 +29,14 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Select Type</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="sub_category_name" value="{{ old('sub_category_name') }}">
+                        <?php //print_r($categories); ?>
+                        <select name="sub_category_name" class="form-control" data-style="btn-primary">
+                        <?php foreach ($categories as $key => $value) { ?>
+                           
+                            <option class="lead" value="<?php echo  $value->id; ?>"><?php echo  $value->name; ?></option>
+                        <?php } ?>    
+                      </select>
+                        <!-- <input type="text" class="form-control" name="sub_category_name" value="{{ old('sub_category_name') }}"> -->
                     </div>
                 </div>
 

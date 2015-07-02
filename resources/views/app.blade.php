@@ -83,6 +83,8 @@
             });
 
             $('[data-toggle="tooltip"]').tooltip();
+
+            $('.selectpicker').selectpicker();
         });
     </script>
 
