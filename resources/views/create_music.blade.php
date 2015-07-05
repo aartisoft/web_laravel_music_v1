@@ -27,13 +27,13 @@
 
 					<div class="col-sm-8" style="background-color:lightsteelblue;">
 						<div class="panel panel-default">
-						            <div class="panel-heading">
-						              <h3 class="panel-title">Uploads</h3>
-						            </div>
-						            <div class="panel-body demo-panel-files" id='demo-files'>
-						              <span class="demo-note">No Files have been selected/droped yet...</span>
-						            </div>
-						          </div>
+				            <div class="panel-heading">
+				              <h3 class="panel-title">Uploads</h3>
+				            </div>
+				            <div class="panel-body demo-panel-files" id='demo-files'>
+				              <span class="demo-note">No Files have been selected/droped yet...</span>
+				            </div>
+				          </div>
 					</div>
 
 					
@@ -55,8 +55,6 @@
 
 		</div>
 	</div>
-
-	
 
 </div>
 

@@ -17,6 +17,7 @@ class CategoryController extends Controller {
 	 *
 	 * @return Response
 	 */
+
 	public function index()
 	{
         return view('create_category');
@@ -30,7 +31,7 @@ class CategoryController extends Controller {
         return view('welcome', ['name' => 'Successfully saved!']);
 	}
 
-    public function createSubCategory(Request $request)
+    public function postSubCategory(Request $request)
     {
         $flight = new SubCategory();
         $flight->id = $request->sub_category_name;
@@ -41,7 +42,6 @@ class CategoryController extends Controller {
         $imageName = $flight->image;
         $request->file('image')->move(base_path() . '/public/images/catalog/', $imageName);
 
-
         return view('welcome', ['name' => 'Successfully saved!']);
     }
 
@@ -49,7 +49,7 @@ class CategoryController extends Controller {
     public function subCategory(Request $request)
     {
     	$category = DB::table('category')->get();
-        return view('create_sub_category', ['categories' => $category]);
+        return view('admin.create_sub_category', ['categories' => $category]);
     }
 
 	/**
@@ -65,9 +65,13 @@ class CategoryController extends Controller {
 
 	public function uploadForm()
 	{
-		return view('create_music');
+		return view('admin.upload_music');
 	}
 
+	public function widget()
+	{
+		return view('admin.main');
+	}
 
 	/**
 	 * Display the specified resource.

@@ -18,11 +18,10 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-
 	<!-- Uploader -->
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/uploader.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../public/css/demo.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../public/css/uploader.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../public/css/demo.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -41,11 +40,11 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Home</a></li>
-                    @if (Auth::guest())
+              @if (Auth::guest())
 
-                    @else
-                        <li><a href="{{ url('/category/sub') }}">Category</a></li>
-                    @endif
+              @else
+                  <li><a href="{{ url('/category/sub') }}">Category</a></li>
+              @endif
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

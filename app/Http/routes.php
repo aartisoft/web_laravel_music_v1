@@ -14,7 +14,8 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('category', 'CategoryController@index');
-Route::get('category/sub', 'CategoryController@subCategory');
+Route::get('widget', 'CategoryController@widget');
+Route::get('sub_category', 'CategoryController@subCategory');
 Route::get('uploadform','CategoryController@uploadForm');
 Route::get('user/{id}', 'WelcomeController@showProfile');
 
@@ -29,7 +30,7 @@ Route::get('result/{$roll}', function () {
 
 
 Route::post('create','CategoryController@create');
-Route::post('create_sub','CategoryController@createSubCategory');
+Route::post('create_sub','CategoryController@postSubCategory');
 Route::post('upload','CategoryController@upload');
 
 
