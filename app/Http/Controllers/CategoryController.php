@@ -65,7 +65,17 @@ class CategoryController extends Controller {
 
 	public function uploadForm()
 	{
-		return view('admin.upload_music');
+        $languages = DB::table('subcategories')->where('id', '=', 1)->get();
+        $singers = DB::table('subcategories')->where('id', '=', 2)->get();
+        $actors = DB::table('subcategories')->where('id', '=', 3)->get();
+        $movies = DB::table('subcategories')->where('id', '=', 4)->get();
+        $albums = DB::table('subcategories')->where('id', '=', 5)->get();
+        $new_releases = DB::table('subcategories')->where('id', '=', 6)->get();
+        $best_of_collection = DB::table('subcategories')->where('id', '=', 7)->get();
+        //print_r( $best_of_collection);
+        $data = array('languages' => $languages, 'singers' => $singers, 'actors'=>$actors
+        , 'movies'=>$movies, 'albums' =>$albums, 'new_releases' => $new_releases, 'best_of_collection'=>$best_of_collection);
+		return view('admin.upload_music', $data);
 	}
 
 	public function widget()
