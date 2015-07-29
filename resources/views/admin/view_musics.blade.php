@@ -58,6 +58,7 @@
                                         <span class="lbl"></span>
                                     </label>
                                 </th>
+                                <th>Title</th>
                                 <th>Language</th>
                                 <th>Singer</th>
                                 <th class="hidden-480">Actor</th>
@@ -82,7 +83,9 @@
                                             <span class="lbl"></span>
                                         </label>
                                     </td>
-
+                                    <td>
+                                        <a href="#">{{ $music->title }}</a>
+                                    </td>
                                     <td>
                                         <a href="#">{{ $music->language }}</a>
                                     </td>
