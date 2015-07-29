@@ -72,8 +72,9 @@
 
 /* D&D Demo */
 .demo-panel-files {
+	/*
 	max-height: 290px;
-	min-height: 290px;
+	min-height: 290px;*/
 	overflow: auto;
 	cursor: default;
 }

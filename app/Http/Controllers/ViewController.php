@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
+use DB;
 
-class WelcomeController extends Controller {
+class ViewController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -39,5 +40,21 @@ class WelcomeController extends Controller {
 		return view('welcome', ['name' => $id]);
         //return "hello" + $id;
     }
+
+	public function viewMusics()
+	{
+		//$users = DB::select('select id,name  from actors');
+		$users = DB::select(DB::raw("SELECT musics.music_id, languages.name as language, singers.name as singer, actors.name as actor, movies.name as movie
+										FROM musics
+										INNER JOIN languages  ON musics.language = languages.id
+										LEFT JOIN singers ON musics.singer = singers.id
+										LEFT JOIN actors ON musics.actor = actors.id
+										LEFT JOIN movies ON musics.movie = movies.id
+										group by languages.name, singers.name, actors.name
+										order by musics.music_id desc"));
+
+		return view('admin.view_musics', ['value' => $users]);
+	}
+
 
 }

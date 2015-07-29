@@ -5,11 +5,13 @@ use App\BestOf;
 use App\Category;
 use App\Language;
 use App\Movie;
+use App\Album;
 use App\NewRelease;
 use App\Singer;
 use App\SubCategory;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 use App\UploadMusic;
 use Illuminate\Http\Request;
@@ -47,7 +49,7 @@ class CategoryController extends Controller {
 
         if ("1" == $request->cat_id) {
             $createSub = new Language();
-            $createSub->id = $request->cat_id;
+            //$createSub->id = $request->cat_id;
             $createSub->name = $request->name;
             $createSub->image = time(). '.' .$request->file('image')->getClientOriginalExtension();
             $createSub->save();
@@ -56,7 +58,7 @@ class CategoryController extends Controller {
 
         } else if ("2" == $request->cat_id) {
             $createSub = new Singer();
-            $createSub->id = $request->cat_id;
+            //$createSub->id = $request->cat_id;
             $createSub->name = $request->name;
             $createSub->image = time(). '.' .$request->file('image')->getClientOriginalExtension();
             $createSub->save();
@@ -65,7 +67,7 @@ class CategoryController extends Controller {
 
         } else if ("3" == $request->cat_id) {
             $createSub = new Actor();
-            $createSub->id = $request->cat_id;
+            //$createSub->id = $request->cat_id;
             $createSub->name = $request->name;
             $createSub->image = time(). '.' .$request->file('image')->getClientOriginalExtension();
             $createSub->save();
@@ -83,7 +85,7 @@ class CategoryController extends Controller {
 
         } else if ("5" == $request->cat_id) {
             $createSub = new Album();
-            $createSub->id = $request->cat_id;
+            //$createSub->id = $request->cat_id;
             $createSub->name = $request->name;
             $createSub->image = time(). '.' .$request->file('image')->getClientOriginalExtension();
             $createSub->save();
@@ -92,7 +94,7 @@ class CategoryController extends Controller {
 
         } else if ("6" == $request->cat_id) {
             $createSub = new NewRelease();
-            $createSub->id = $request->cat_id;
+            //$createSub->id = $request->cat_id;
             $createSub->name = $request->name;
             $createSub->image = time(). '.' .$request->file('image')->getClientOriginalExtension();
             $createSub->save();
@@ -101,7 +103,7 @@ class CategoryController extends Controller {
 
         } else if ("7" == $request->cat_id) {
             $createSub = new BestOf();
-            $createSub->id = $request->cat_id;
+            //$createSub->id = $request->cat_id;
             $createSub->name = $request->name;
             $createSub->image = time(). '.' .$request->file('image')->getClientOriginalExtension();
             $createSub->save();
@@ -126,7 +128,7 @@ class CategoryController extends Controller {
 	 */
 	public function upload(Request $request)
 	{
-        //print_r($request->input('language'));
+        //print_r($request);
         $upload = new UploadMusic();
         $upload->language = $request->language;
         $upload->singer = $request->singer;
@@ -137,13 +139,40 @@ class CategoryController extends Controller {
         $upload->bestof = $request->bestof;
 
         $upload->music_file = time(). '_' .$request->file('file')->getClientOriginalName();
-        $upload->save();
+        //$upload->save();
 
         $imageName = $upload->music_file;
         $request->file('file')->move(base_path() . '/public/musics/files/', $imageName);
 
         //$request->file('file')->move(base_path().'/public/images/catalogTest/', $request->file('file')->getClientOriginalName());
-		return json_encode(array('status' => 'ok'));
+		return json_encode(array('status' => 'ok','file_name' => $upload->music_file));
+	}
+
+    public function saveMusics(Request $request)
+	{
+        //print_r($request);
+
+        $files = explode(":::", trim($request->all_uploaded_file));
+
+        for($i=1; $i < count($files); $i++) {
+            //echo ;
+            $upload = new UploadMusic();
+            $upload->language = $request->language;
+            $upload->singer = $request->singer;
+            $upload->actor = $request->actor;
+            $upload->movie = $request->movie;
+            $upload->album = $request->album;
+            $upload->new_release = $request->new_release;
+            $upload->bestof = $request->bestof;
+
+            $upload->music_file = $files[$i];
+            $upload->save();
+        }
+
+        //return $this->uploadForm("Save Successfully");
+        return redirect('uploadform')->with('success', 'Music(s) has been saved successfully');
+        //return Redirect::route('uploadform');
+
 	}
 
 	public function uploadForm()

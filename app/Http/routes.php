@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'ViewController@index');
 Route::get('home', 'HomeController@index');
 Route::get('category', 'CategoryController@index');
 Route::get('widget', 'CategoryController@widget');
 Route::get('sub_category', 'CategoryController@subCategory');
 Route::get('uploadform','CategoryController@uploadForm');
-Route::get('user/{id}', 'WelcomeController@showProfile');
+Route::get('user/{id}', 'ViewController@showProfile');
+Route::get('view_musics', 'ViewController@viewMusics');
 
 
 Route::get('response', function () {
@@ -32,6 +33,7 @@ Route::get('result/{$roll}', function () {
 Route::post('create','CategoryController@create');
 Route::post('create_sub','CategoryController@postSubCategory');
 Route::post('upload','CategoryController@upload');
+Route::post('saveMusics','CategoryController@saveMusics');
 
 
 Route::controllers([
