@@ -26,7 +26,7 @@ Route::get('response', function () {
 });
 
 Route::get('result/{$roll}', function () {
-    return view('greeting', ['name' => 'Masum Hasan bfdsf rewrew']);
+    return view('greeting', ['name' => 'Masum Hasan bfdsf rewrew etwet']);
 });
 
 
