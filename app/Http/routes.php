@@ -26,7 +26,7 @@ Route::get('response', function () {
 });
 
 Route::get('result/{$roll}', function () {
-    return view('greeting', ['name' => 'James']);
+    return view('greeting', ['name' => 'Masum']);
 });
 
 
