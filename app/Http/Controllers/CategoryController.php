@@ -1,5 +1,5 @@
-<?php namespace App\Http\Controllers;
-
+<?php
+namespace App\Http\Controllers;
 use App\Actor;
 use App\BestOf;
 use App\Category;
