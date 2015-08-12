@@ -7,5 +7,4 @@ class Category extends Model {
     protected $table = 'category';
     protected $fillable = ['name'];
     //protected $hidden = ['password', 'remember_token'];
-
 }
